@@ -52,7 +52,7 @@ function GetCustList()
 function GenerateOutput(result)
 {   var count = 0;
     var displaytext = "";
-    displaytext += "<table>";
+    displaytext += '<table id="AllCust"><tr><th id="AllCustH">Customer ID</th><th id="AllCustH">Company Name</th><th id="AllCustH">City</th></tr>';
     //Loop to extract data from the response object
     for (count = 0; count < result.GetAllCustomersResult.length; count++)
     {
@@ -93,14 +93,14 @@ function GenerateOutput_2(result)
 {
     var count = 0;
     var displaytext = "";
-    displaytext += "<table>";
+    displaytext += '<table id="CustOrdH"><tr><th>Product Name</th><th>Quantity Ordered</th></tr>';
     //Loop to extract data from the response object
-    for (count = 0; count < result.getCustomerOrderHistory.length; count++)
+    for (count = 0; count < result.length; count++)
     {
         
         displaytext += "<tr>";
-            displaytext += "<td>" + result.getCustomerOrderHistory[count].ProductName + "</td>";
-            displaytext += "<td>" + result.getCustomerOrderHistory[count].Total + "</td>";
+            displaytext += "<td>" + result[count].ProductName + "</td>";
+            displaytext += "<td>" + result[count].Total + "</td>";
         displaytext += "</tr>";
     }
     displaytext += "</table>";
@@ -113,8 +113,8 @@ function GetOrders()
 {
     var objRequest = new XMLHttpRequest();  //Create AJAX request object
     //Create URL and Query string
-    var url = "http://bus-pluto.ad.uab.edu/jsonwebservice/service1.svc/getOrdersForCustomer/customerID";
-    url += document.getElementById("custid").value;
+    var url = "http://bus-pluto.ad.uab.edu/jsonwebservice/service1.svc/getOrdersForCustomer/";
+    url += document.getElementById("custid2").value;
     //Checks that the object has returned data
     objRequest.onreadystatechange = function()
     {
@@ -131,7 +131,7 @@ function GetOrders()
 function GenerateOutput3(result)
 {   var count = 0;
     var displaytext = "";
-    displaytext += "<table>";
+    displaytext += '<table id="Ord4Cust"><tr><th>Order Date</th><th>Order ID</th><th>Shipping Address</th><th>Shipping City</th><th>Shipping Name</th><th>Shipping Postcode</th><th>Shipped Date</th></tr>';
     //Loop to extract data from the response object
     for (count = 0; count < result.GetOrdersForCustomerResult.length; count++)
     {
